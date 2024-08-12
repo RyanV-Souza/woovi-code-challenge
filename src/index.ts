@@ -1,6 +1,5 @@
 import Koa from "koa";
 import Router from "@koa/router";
-import cors from "@koa/cors";
 import { graphqlHTTP } from "koa-graphql";
 
 const app = new Koa();
