@@ -1,0 +1,31 @@
+{
+  "name": "woovi-code-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --watch src --ext ts --exec ts-node src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "volta": {
+    "node": "20.16.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.15.0",
+    "@types/koa__router": "^12.0.4",
+    "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "@koa/router": "^12.0.1",
+    "@types/node": "^22.2.0",
+    "graphql": "^15.9.0",
+    "koa": "^2.15.3",
+    "koa-graphql": "^0.12.0",
+    "mongoose": "^8.5.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}
