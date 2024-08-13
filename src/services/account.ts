@@ -1,5 +1,5 @@
-import { Account } from "@/models/account";
-import { Transaction } from "@/models/transaction";
+import { Account } from "../models/account";
+import { Transaction } from "../models/transaction";
 import { Types } from "mongoose";
 
 export async function createAccount(name: string) {
