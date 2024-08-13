@@ -1,6 +1,5 @@
 import { GraphQLNonNull, GraphQLInt, GraphQLID } from "graphql";
 import { TransactionType } from "../types/transaction-type";
-import { Schema } from "mongoose";
 import { createTransaction } from "@/services/transaction";
 import { randomUUID } from "crypto";
 import { getById } from "@/services/account";

@@ -16,6 +16,10 @@ export const createTransferMutation = {
       throw new Error("Cannot transfer money to the same account");
     }
 
+    if (amount <= 0) {
+      throw new Error("Invalid amount");
+    }
+
     const fromAccount = await getById(fromAccountId);
 
     const toAccount = await getById(toAccountId);
