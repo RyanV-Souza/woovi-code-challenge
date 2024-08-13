@@ -1,6 +1,4 @@
 import { GraphQLID, GraphQLInterfaceType, GraphQLNonNull } from "graphql";
-import { AccountType } from "../types/account-type";
-import { TransactionType } from "../types/transaction-type";
 
 export const NodeInterface = new GraphQLInterfaceType({
   name: "Node",
