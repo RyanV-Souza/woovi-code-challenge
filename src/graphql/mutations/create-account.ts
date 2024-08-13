@@ -1,21 +1,15 @@
-import { GraphQLFloat, GraphQLString } from "graphql";
-import AccountType from "../types/account-type";
-import Account from "@/Models/account";
+import { GraphQLNonNull, GraphQLString } from "graphql";
+import { AccountType } from "../types/account-type";
+import { createAccount } from "@/services/account";
 
-const createAccountMutation = {
+export const createAccountMutation = {
   type: AccountType,
   args: {
-    name: { type: GraphQLString },
-    balance: { type: GraphQLFloat },
+    name: { type: new GraphQLNonNull(GraphQLString) },
   },
-  resolve(parent, args) {
-    const account = new Account({
-      name: args.name,
-      balance: args.balance,
-    });
+  async resolve(parent, { name }) {
+    const account = await createAccount(name);
 
-    return account.save();
+    return account;
   },
 };
-
-export default createAccountMutation;
