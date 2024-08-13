@@ -1,3 +1,4 @@
+import "dotenv/config";
 import Koa from "koa";
 import Router from "@koa/router";
 import { createHandler } from "graphql-http/lib/use/koa";
@@ -5,11 +6,12 @@ import { schema } from "./graphql/schema";
 import koaPlayGround from "graphql-playground-middleware-koa";
 import mongoose from "mongoose";
 import cors from "@koa/cors";
+import { connect } from "./config/database";
 
 const app = new Koa();
 const router = new Router();
 
-mongoose.connect("mongodb://localhost:27017/bank");
+connect();
 
 app.use(cors("*"));
 
