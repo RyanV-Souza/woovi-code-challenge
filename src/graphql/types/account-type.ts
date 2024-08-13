@@ -1,31 +1,31 @@
 import {
   GraphQLID,
   GraphQLInt,
+  GraphQLNonNull,
   GraphQLObjectType,
   GraphQLString,
 } from "graphql";
 import { showBalance } from "@/services/account";
+import { NodeInterface } from "../interface/node-interface";
 
 export const AccountType = new GraphQLObjectType({
   name: "Account",
+  interfaces: [NodeInterface],
   fields: () => ({
-    id: {
-      type: GraphQLID,
-    },
+    id: { type: new GraphQLNonNull(GraphQLID) },
     name: {
       type: GraphQLString,
     },
     balance: {
       type: GraphQLInt,
-      resolve: async (field) => {
-        const balance = await showBalance(field.id);
-
+      resolve: async (obj) => {
+        const balance = await showBalance(obj.id);
         return balance;
       },
     },
     createdAt: {
       type: GraphQLString,
-      resolve: (field) => new Date(field.createdAt).toISOString(),
+      resolve: (obj) => new Date(obj.createdAt).toISOString(),
     },
   }),
 });

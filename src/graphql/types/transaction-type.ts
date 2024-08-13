@@ -1,23 +1,27 @@
 import {
   GraphQLID,
   GraphQLInt,
+  GraphQLNonNull,
   GraphQLObjectType,
   GraphQLString,
 } from "graphql";
 import { AccountType } from "./account-type";
 import { getById } from "@/services/account";
+import { NodeInterface } from "../interface/node-interface";
 
 export const TransactionType = new GraphQLObjectType({
   name: "Transaction",
+  interfaces: [NodeInterface],
   fields: () => ({
-    id: { type: GraphQLID },
+    id: {
+      type: new GraphQLNonNull(GraphQLID),
+    },
     type: { type: GraphQLString },
     accountId: { type: GraphQLID },
     account: {
       type: AccountType,
-      resolve: async (field) => {
-        const account = await getById(field.accountId);
-
+      resolve: async (obj) => {
+        const account = await getById(obj.accountId);
         return account;
       },
     },
@@ -26,7 +30,7 @@ export const TransactionType = new GraphQLObjectType({
     idempotencyId: { type: GraphQLString },
     createdAt: {
       type: GraphQLString,
-      resolve: (field) => new Date(field.createdAt).toISOString(),
+      resolve: (obj) => new Date(obj.createdAt).toISOString(),
     },
   }),
 });

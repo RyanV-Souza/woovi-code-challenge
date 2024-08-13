@@ -10,16 +10,6 @@ export async function createAccount(name: string) {
   return account;
 }
 
-export async function getAll() {
-  const accounts = await Account.find({});
-
-  if (!accounts) {
-    return [];
-  }
-
-  return accounts;
-}
-
 export async function getById(id: string) {
   if (!Types.ObjectId.isValid(id)) {
     throw new Error("Invalid id");
