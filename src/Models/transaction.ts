@@ -2,19 +2,24 @@ import { Schema, model, Document } from "mongoose";
 import { IAccount } from "./account";
 
 export interface ITransaction extends Document {
-  fromAccount: IAccount;
-  toAccount: IAccount;
+  type: "deposit" | "transfer";
+  account: IAccount;
   amount: number;
+  balance: number;
   createdAt: Date;
+  idempotencyId: string;
 }
 
 const transactionSchema = new Schema({
-  fromAccount: { type: Schema.Types.ObjectId, ref: "Account", required: true },
-  toAccount: { type: Schema.Types.ObjectId, ref: "Account", required: true },
+  type: { type: String, enum: ["deposit", "transfer"], required: true },
+  accountId: { type: Schema.Types.ObjectId, ref: "Account", required: true },
   amount: { type: Number, required: true },
+  balance: { type: Number, required: true },
   createdAt: { type: Date, default: Date.now },
+  idempotencyId: { type: String, unique: true, required: true },
 });
 
-const Transaction = model<ITransaction>("Transaction", transactionSchema);
-
-export default Transaction;
+export const Transaction = model<ITransaction>(
+  "Transaction",
+  transactionSchema
+);
