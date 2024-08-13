@@ -1,4 +1,4 @@
-import { schema } from "../graphql/schema";
+import { schema } from "../schema/schema";
 import { graphql, GraphQLError } from "graphql";
 import { clearDatabase, closeDatabase, connect } from "./database-handler";
 

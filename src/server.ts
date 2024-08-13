@@ -2,7 +2,7 @@ import "dotenv/config";
 import Koa from "koa";
 import Router from "@koa/router";
 import { createHandler } from "graphql-http/lib/use/koa";
-import { schema } from "./graphql/schema";
+import { schema } from "./schema/schema";
 import koaPlayGround from "graphql-playground-middleware-koa";
 import mongoose from "mongoose";
 import cors from "@koa/cors";

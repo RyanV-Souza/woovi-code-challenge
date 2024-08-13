@@ -2,30 +2,30 @@
   "compilerOptions": {
     "types": ["node", "jest"],
     "module": "commonjs",
+    "target": "ES2021",
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
     "experimentalDecorators": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "target": "ES2021",
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false,
+    "strictBindCallApply": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmitOnError": true,
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@/services/*": [
-        "src/services/*"
-      ]
+      "@/*": ["src/*"],
+      "@/services/*": ["src/services/*"]
     }
-  }
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }

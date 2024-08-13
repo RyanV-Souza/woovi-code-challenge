@@ -1,4 +1,4 @@
-import { GraphQLSchema } from "graphql";
+const { GraphQLSchema } = require("graphql");
 import { RootQuery } from "./queries";
 import { Mutation } from "./mutations";
 
