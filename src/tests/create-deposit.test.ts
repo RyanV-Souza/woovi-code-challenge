@@ -26,7 +26,7 @@ describe("createDepositMutation", () => {
       accountId,
       amount: 10000,
       type: "deposit",
-      balance: 10000, // O saldo após o depósito deve ser atualizado
+      balance: 10000,
     };
 
     const query = `
