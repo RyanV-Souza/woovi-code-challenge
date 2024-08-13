@@ -1,6 +1,6 @@
 import { GraphQLInt, GraphQLString } from "graphql";
 import { AccountConnection } from "../connections/account-connection";
-import { Account } from "@/models/account";
+import { Account } from "@/model/account";
 
 export const getAllAccountsQuery = {
   type: AccountConnection,

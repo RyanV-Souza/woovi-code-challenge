@@ -1,4 +1,4 @@
-import { Transaction } from "../models/transaction";
+import { Transaction } from "../model/transaction";
 
 export async function createTransaction(
   accountId: string,
