@@ -19,7 +19,7 @@
     "noUncheckedIndexedAccess": true,
     "isolatedModules": true,
     "paths": {
-      "@/*": ["./*"],
+      "@/*": ["./src/*"],
     }
   },
   "include": ["src/**/*.ts"],

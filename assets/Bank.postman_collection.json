@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1de03436-4be5-491b-8a97-9e641ddd0315",
+		"_postman_id": "0a63ed18-37c2-4e3f-ae64-401310057f1d",
 		"name": "Bank",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "14297590"
@@ -18,15 +18,17 @@
 							"mode": "graphql",
 							"graphql": {
 								"query": "mutation CreateNewAccount($name: String!) {\r\n  CreateAccount(name: $name) {\r\n    id\r\n    name\r\n    balance\r\n    createdAt\r\n  }\r\n}",
-								"variables": "{\r\n    \"name\": \"Nova Conta\"\r\n}"
+								"variables": "{\r\n    \"name\": \"Nova Conta2\"\r\n}"
 							}
 						},
 						"url": {
-							"raw": "localhost:4001/graphql",
+							"raw": "https://woovi-code-challenge-ruby.vercel.app/graphql",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"woovi-code-challenge-ruby",
+								"vercel",
+								"app"
 							],
-							"port": "4001",
 							"path": [
 								"graphql"
 							]
@@ -47,11 +49,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:4001/graphql",
+							"raw": "https://woovi-code-challenge-ruby.vercel.app/graphql",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"woovi-code-challenge-ruby",
+								"vercel",
+								"app"
 							],
-							"port": "4001",
 							"path": [
 								"graphql"
 							]
@@ -68,15 +72,17 @@
 							"mode": "graphql",
 							"graphql": {
 								"query": "query GetAccountById($id: ID!) {\r\n  account(id: $id) {\r\n    id\r\n    name\r\n    balance\r\n    createdAt\r\n  }\r\n}\r\n",
-								"variables": "{\r\n    \"id\": \"66bbb7801ab0f76238863800\"\r\n}"
+								"variables": "{\r\n    \"id\": \"66bcb7ebc8a27dc48bf02fb2\"\r\n}"
 							}
 						},
 						"url": {
-							"raw": "localhost:4001/graphql",
+							"raw": "https://woovi-code-challenge-ruby.vercel.app/graphql",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"woovi-code-challenge-ruby",
+								"vercel",
+								"app"
 							],
-							"port": "4001",
 							"path": [
 								"graphql"
 							]
@@ -97,16 +103,18 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation CreateDeposit($accountId: ID!, $amount: Int!) {\r\n  CreateDeposit(accountId: $accountId, amount: $amount) {\r\n    id\r\n    type\r\n    account {\r\n      id\r\n      name\r\n      balance\r\n    }\r\n    amount\r\n    balance\r\n    createdAt\r\n  }\r\n}",
-								"variables": "{\r\n  \"accountId\": \"66bbb7801ab0f76238863800\",\r\n  \"amount\": 53000\r\n}"
+								"query": "mutation CreateDeposit($accountId: ID!, $amount: Int!) {\r\n  CreateDeposit(accountId: $accountId, amount: $amount) {\r\n    id\r\n    type\r\n    account {\r\n      id\r\n      name\r\n      balance\r\n    }\r\n    amount\r\n    balance\r\n    createdAt\r\n    relationAccountId\r\n  }\r\n}",
+								"variables": "{\r\n  \"accountId\": \"66bcb7ebc8a27dc48bf02fb2\",\r\n  \"amount\": 12\r\n}"
 							}
 						},
 						"url": {
-							"raw": "localhost:4001/graphql",
+							"raw": "https://woovi-code-challenge-ruby.vercel.app/graphql",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"woovi-code-challenge-ruby",
+								"vercel",
+								"app"
 							],
-							"port": "4001",
 							"path": [
 								"graphql"
 							]
@@ -122,16 +130,18 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation CreateTransfer($fromAccountId: ID!, $toAccountId: ID!, $amount: Int!) {\r\n  CreateTransfer(fromAccountId: $fromAccountId, toAccountId: $toAccountId, amount: $amount) {\r\n    transfer {\r\n      id\r\n      type\r\n      amount\r\n      balance\r\n      createdAt\r\n      account {\r\n        id\r\n        name\r\n        balance\r\n      }\r\n    }\r\n    deposit {\r\n      id\r\n      type\r\n      amount\r\n      balance\r\n      createdAt\r\n      account {\r\n        id\r\n        name\r\n        balance\r\n      }\r\n    }\r\n  }\r\n}\r\n",
-								"variables": "{\r\n  \"fromAccountId\": \"66bbb7801ab0f76238863800\",\r\n  \"toAccountId\": \"66bbb7911ab0f76238863810\",\r\n  \"amount\": 2003\r\n}\r\n"
+								"query": "mutation CreateTransfer($fromAccountId: ID!, $toAccountId: ID!, $amount: Int!) {\r\n  CreateTransfer(fromAccountId: $fromAccountId, toAccountId: $toAccountId, amount: $amount) {\r\n    transfer {\r\n      id\r\n      type\r\n      amount\r\n      balance\r\n      createdAt\r\n      relationAccountId\r\n      account {\r\n        id\r\n        name\r\n        balance\r\n      }\r\n    }\r\n    deposit {\r\n      id\r\n      type\r\n      amount\r\n      balance\r\n      createdAt\r\n      relationAccountId\r\n      account {\r\n        id\r\n        name\r\n        balance\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+								"variables": "{\r\n  \"fromAccountId\": \"66bcb7ebc8a27dc48bf02fb2\",\r\n  \"toAccountId\": \"66bbb7911ab0f76238863810\",\r\n  \"amount\": 2\r\n}\r\n"
 							}
 						},
 						"url": {
-							"raw": "localhost:4001/graphql",
+							"raw": "https://woovi-code-challenge-ruby.vercel.app/graphql",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"woovi-code-challenge-ruby",
+								"vercel",
+								"app"
 							],
-							"port": "4001",
 							"path": [
 								"graphql"
 							]
