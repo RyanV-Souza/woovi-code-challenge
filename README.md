@@ -87,4 +87,4 @@ A aplicação consegue ser acessada através desse link: [woovi-code-challenge-r
 
 ## Considerações
 
-Essa foi minha primeira aplicação utilizando GraphQL e MongoDB. Eu gostei muito e sinto que evoluí bastante nesses três dias de desafio. Utilizei bastante referências da própria Woovi e do pessoal que trabalha nela, muito obrigado pelos posts, que me ajudaram muito!
+Essa foi minha primeira aplicação utilizando GraphQL e MongoDB. Eu gostei muito e sinto que evoluí bastante nesses três dias que me aventurei. Utilizei bastante referências da própria Woovi e do pessoal que trabalha nela, muito obrigado pelos posts, que me ajudaram muito!
