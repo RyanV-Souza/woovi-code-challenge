@@ -1,8 +1,8 @@
 import { GraphQLNonNull, GraphQLInt, GraphQLID } from "graphql";
 import { TransactionType } from "../types/transaction-type";
-import { createTransaction } from "@/services/transaction";
+import { createTransaction } from "../../services/transaction";
 import { randomUUID } from "crypto";
-import { getById } from "@/services/account";
+import { getById } from "../../services/account";
 
 export const createDepositMutation = {
   type: TransactionType,

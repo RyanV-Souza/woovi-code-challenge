@@ -5,7 +5,7 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from "graphql";
-import { showBalance } from "@/services/account";
+import { showBalance } from "../../services/account";
 import { NodeInterface } from "../interface/node-interface";
 
 export const AccountType = new GraphQLObjectType({

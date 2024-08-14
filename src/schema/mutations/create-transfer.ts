@@ -1,7 +1,7 @@
 import { GraphQLID, GraphQLInt, GraphQLNonNull } from "graphql";
-import { createTransaction } from "@/services/transaction";
+import { createTransaction } from "../../services/transaction";
 import { randomUUID } from "crypto";
-import { getById } from "@/services/account";
+import { getById } from "../../services/account";
 import { TransferResultType } from "../types/transfer-result-type";
 
 export const createTransferMutation = {

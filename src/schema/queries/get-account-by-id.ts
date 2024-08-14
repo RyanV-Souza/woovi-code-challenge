@@ -1,6 +1,6 @@
 import { GraphQLID } from "graphql";
 import { AccountType } from "../types/account-type";
-import { getById } from "@/services/account";
+import { getById } from "../../services/account";
 
 export const getAccountByIdQuery = {
   type: AccountType,

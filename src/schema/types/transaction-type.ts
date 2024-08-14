@@ -6,7 +6,7 @@ import {
   GraphQLString,
 } from "graphql";
 import { AccountType } from "./account-type";
-import { getById } from "@/services/account";
+import { getById } from "../../services/account";
 import { NodeInterface } from "../interface/node-interface";
 
 export const TransactionType = new GraphQLObjectType({

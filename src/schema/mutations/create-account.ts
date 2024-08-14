@@ -1,6 +1,6 @@
 import { GraphQLNonNull, GraphQLString } from "graphql";
 import { AccountType } from "../types/account-type";
-import { createAccount } from "@/services/account";
+import { createAccount } from "../../services/account";
 
 export const createAccountMutation = {
   type: AccountType,
