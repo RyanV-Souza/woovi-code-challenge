@@ -11,6 +11,10 @@ export const getAllAccountsQuery = {
   async resolve(parent, args) {
     const query = {};
 
+    if (args.first < 0) {
+      throw new Error("First cannot be less than 0");
+    }
+
     if (args.after) {
       query["_id"] = {
         $gt: Buffer.from(args.after, "base64").toString("ascii"),
