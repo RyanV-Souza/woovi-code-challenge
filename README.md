@@ -1,3 +1,4 @@
+
 # Woovi Code Challenge
 
 ## Funcionalidades
@@ -13,24 +14,31 @@
 1. **Clone o Repositório:**
 
    ```bash
+
    git clone https://github.com/RyanV-Souza/woovi-code-challenge
+
    cd woovi-code-challenge
+
    ```
 2. **Instale as Dependências:**
 
   Certifique-se de usar a versão LTS do Node.js
 
 ```bash
+
    npm install
+
 ```
 
 3. **Configuração do Banco de Dados:**
 
-   Certifique-se de que o MongoDB está rodando localmente ou configure as variáveis de ambiente para apontar para um banco de dados MongoDB acessível.
+   Certifique-se de que o MongoDB está rodando localmente ou configure as variáveis de ambiente para apontar para um banco de dados MongoDB acessível. (Você pode usar o arquivo `.env.example` como referência.)
 4. **Inicie o Servidor:**
 
    ```bash
+
    npm start
+
    ```
 
    O servidor estará disponível em `http://localhost:4001`.
@@ -55,7 +63,9 @@ Rotas:
 Para executar os testes, utilize o seguinte comando:
 
 ```bash
+
 npm test
+
 ```
 
 Os testes cobrem a criação de contas, depósitos, transferências e consultas usando Jest.
@@ -77,4 +87,4 @@ A aplicação consegue ser acessada através desse link: [woovi-code-challenge-r
 
 ## Considerações
 
-Essa foi minha primeira aplicação utilizando GraphQL e MongoDB, eu gostei muito e sinto que evolui bastante nesses três dias de desafio. Utilizei bastante referências da própria Woovi e do pessoal que trabalha nela, muito obrigado pelos posts, me ajudaram muito!
+Essa foi minha primeira aplicação utilizando GraphQL e MongoDB. Eu gostei muito e sinto que evoluí bastante nesses três dias de desafio. Utilizei bastante referências da própria Woovi e do pessoal que trabalha nela, muito obrigado pelos posts, que me ajudaram muito!
