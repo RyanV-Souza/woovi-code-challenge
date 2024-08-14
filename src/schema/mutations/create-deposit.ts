@@ -23,7 +23,8 @@ export const createDepositMutation = {
       account.id,
       amount,
       "deposit",
-      idempotencyId
+      idempotencyId,
+      null
     );
 
     return transaction;

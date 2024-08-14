@@ -25,9 +25,10 @@ export const TransactionType = new GraphQLObjectType({
         return account;
       },
     },
-    amount: { type: GraphQLInt },
-    balance: { type: GraphQLInt },
+    amount: { type: GraphQLInt }, // Todos os dados são salvos em centavos
+    balance: { type: GraphQLInt }, // Todos os dados são salvos em centavos
     idempotencyId: { type: GraphQLString },
+    relationAccountId: { type: GraphQLString }, // Só terá um ID quando for uma transferencia/deposito feito de uma conta para outra
     createdAt: {
       type: GraphQLString,
       resolve: (obj) => new Date(obj.createdAt).toISOString(),

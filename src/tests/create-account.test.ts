@@ -51,8 +51,10 @@ describe("createAccountMutation", () => {
       variableValues: args,
     });
 
-    expect(result.errors).toBeDefined();
-    expect(result.errors).toHaveLength(1);
-    expect(result.errors[0]).toBeInstanceOf(GraphQLError);
+    const errors = result.errors ?? [];
+
+    expect(errors).toBeDefined();
+    expect(errors).toHaveLength(1);
+    expect(errors[0]).toBeInstanceOf(GraphQLError);
   });
 });

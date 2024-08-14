@@ -1,7 +1,7 @@
 import { schema } from "../schema/schema";
 import { graphql, GraphQLError } from "graphql";
 import { clearDatabase, closeDatabase, connect } from "./database-handler";
-import { createAccount } from "@/services/account";
+import { createAccount } from "../services/account";
 
 beforeAll(async () => await connect());
 
@@ -63,10 +63,12 @@ describe("getAccountByIdQuery", () => {
       variableValues: { id: "invalid_id" },
     });
 
-    expect(result.errors).toBeDefined();
-    expect(result.errors).toHaveLength(1);
-    expect(result.errors[0]).toBeInstanceOf(GraphQLError);
-    expect(result.errors[0].message).toMatch(/Invalid id/i);
+    const errors = result.errors ?? [];
+
+    expect(errors).toBeDefined();
+    expect(errors).toHaveLength(1);
+    expect(errors[0]).toBeInstanceOf(GraphQLError);
+    expect(errors[0].message).toMatch(/Invalid id/i);
   });
 
   it("should return an error if account is not found", async () => {
@@ -86,10 +88,12 @@ describe("getAccountByIdQuery", () => {
       variableValues: { id: "551137c2f9e1fac808a5f572" },
     });
 
-    expect(result.errors).toBeDefined();
-    expect(result.errors).toHaveLength(1);
-    expect(result.errors[0]).toBeInstanceOf(GraphQLError);
-    expect(result.errors[0].message).toMatch(/Account not found/i);
+    const errors = result.errors ?? [];
+
+    expect(errors).toBeDefined();
+    expect(errors).toHaveLength(1);
+    expect(errors[0]).toBeInstanceOf(GraphQLError);
+    expect(errors[0].message).toMatch(/Account not found/i);
   });
 
   it("should return an error if ID is not provided", async () => {
@@ -109,8 +113,10 @@ describe("getAccountByIdQuery", () => {
       variableValues: { id: null },
     });
 
-    expect(result.errors).toBeDefined();
-    expect(result.errors).toHaveLength(1);
-    expect(result.errors[0]).toBeInstanceOf(GraphQLError);
+    const errors = result.errors ?? [];
+
+    expect(errors).toBeDefined();
+    expect(errors).toHaveLength(1);
+    expect(errors[0]).toBeInstanceOf(GraphQLError);
   });
 });

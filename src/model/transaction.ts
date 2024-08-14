@@ -3,11 +3,12 @@ import { IAccount } from "./account";
 
 export interface ITransaction extends Document {
   type: "deposit" | "transfer";
-  account: IAccount;
+  accountId: string;
   amount: number;
   balance: number;
   createdAt: Date;
   idempotencyId: string;
+  relationAccountId?: string;
 }
 
 const transactionSchema = new Schema({
@@ -17,6 +18,7 @@ const transactionSchema = new Schema({
   balance: { type: Number, required: true },
   createdAt: { type: Date, default: Date.now },
   idempotencyId: { type: String, unique: true, required: true },
+  relationAccountId: { type: Schema.Types.ObjectId, ref: "Account" },
 });
 
 export const Transaction = model<ITransaction>(

@@ -4,7 +4,8 @@ export async function createTransaction(
   accountId: string,
   amount: number,
   type: "deposit" | "transfer",
-  idempotencyId: string
+  idempotencyId: string,
+  relationAccountId?: string
 ) {
   const latestTransaction = await Transaction.findOne({
     accountId: accountId,
@@ -26,6 +27,7 @@ export async function createTransaction(
     balance: newBalance,
     type,
     idempotencyId,
+    relationAccountId,
   });
 
   await transaction.save();

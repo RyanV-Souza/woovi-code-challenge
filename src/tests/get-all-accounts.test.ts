@@ -1,7 +1,7 @@
 import { schema } from "../schema/schema";
 import { graphql } from "graphql";
 import { clearDatabase, closeDatabase, connect } from "./database-handler";
-import { createAccount } from "@/services/account";
+import { createAccount } from "../services/account";
 
 beforeAll(async () => await connect());
 
@@ -97,7 +97,7 @@ describe("accounts with pagination", () => {
       variableValues: firstVariables,
     });
 
-    const endCursor = firstResult.data.accounts.pageInfo.endCursor;
+    const endCursor = firstResult.data?.accounts.pageInfo.endCursor;
 
     const nextQuery = `
       query Accounts($first: Int!, $after: String) {
@@ -176,7 +176,7 @@ describe("accounts with pagination", () => {
       variableValues: firstVariables,
     });
 
-    const endCursor = firstResult.data.accounts.pageInfo.endCursor;
+    const endCursor = firstResult.data?.accounts.pageInfo.endCursor;
 
     const nextQuery = `
       query Accounts($first: Int!, $after: String) {

@@ -1,4 +1,4 @@
-import { Account } from "../model/account";
+import { Account, IAccount } from "../model/account";
 import { Transaction } from "../model/transaction";
 import { Types } from "mongoose";
 
@@ -10,7 +10,7 @@ export async function createAccount(name: string) {
   return account;
 }
 
-export async function getById(id: string) {
+export async function getById(id: string): Promise<IAccount> {
   if (!Types.ObjectId.isValid(id)) {
     throw new Error("Invalid id");
   }

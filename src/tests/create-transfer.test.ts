@@ -1,8 +1,8 @@
 import { schema } from "../schema/schema";
 import { graphql, GraphQLError } from "graphql";
 import { clearDatabase, closeDatabase, connect } from "./database-handler";
-import { createAccount } from "@/services/account";
-import { createTransaction } from "@/services/transaction";
+import { createAccount } from "../services/account";
+import { createTransaction } from "../services/transaction";
 
 beforeAll(async () => await connect());
 
@@ -38,6 +38,7 @@ describe("createTransferMutation", () => {
       amount: 100,
       type: "transfer",
       balance: 400,
+      relationAccountId: toAccountId,
     };
 
     const expectedDeposit = {
@@ -45,6 +46,7 @@ describe("createTransferMutation", () => {
       amount: 100,
       type: "deposit",
       balance: 100,
+      relationAccountId: fromAccountId,
     };
 
     const query = `
@@ -54,13 +56,15 @@ describe("createTransferMutation", () => {
             accountId
             amount
             type
-            balance
+            balance,
+            relationAccountId
           }
           deposit {
             accountId
             amount
             type
-            balance
+            balance,
+            relationAccountId
           }
         }
       }
@@ -110,10 +114,12 @@ describe("createTransferMutation", () => {
       variableValues: args,
     });
 
-    expect(result.errors).toBeDefined();
-    expect(result.errors).toHaveLength(1);
-    expect(result.errors[0]).toBeInstanceOf(GraphQLError);
-    expect(result.errors[0].message).toMatch(
+    const errors = result.errors ?? [];
+
+    expect(errors).toBeDefined();
+    expect(errors).toHaveLength(1);
+    expect(errors[0]).toBeInstanceOf(GraphQLError);
+    expect(errors[0].message).toMatch(
       /Cannot transfer money to the same account/i
     );
   });
@@ -146,9 +152,11 @@ describe("createTransferMutation", () => {
       variableValues: args,
     });
 
-    expect(result.errors).toBeDefined();
-    expect(result.errors).toHaveLength(1);
-    expect(result.errors[0]).toBeInstanceOf(GraphQLError);
-    expect(result.errors[0].message).toMatch(/Invalid amount/i);
+    const errors = result.errors ?? [];
+
+    expect(errors).toBeDefined();
+    expect(errors).toHaveLength(1);
+    expect(errors[0]).toBeInstanceOf(GraphQLError);
+    expect(errors[0].message).toMatch(/Invalid amount/i);
   });
 });

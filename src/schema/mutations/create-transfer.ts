@@ -28,14 +28,16 @@ export const createTransferMutation = {
       fromAccount.id,
       amount,
       "transfer",
-      randomUUID()
+      randomUUID(),
+      toAccount.id
     );
 
     const deposit = await createTransaction(
       toAccount.id,
       amount,
       "deposit",
-      randomUUID()
+      randomUUID(),
+      fromAccount.id
     );
 
     return { transfer, deposit };
